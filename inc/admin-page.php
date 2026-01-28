@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin functionality (placeholder).
+ * Admin functionality.
  *
  * @package color-palette
  */
@@ -10,7 +10,7 @@ namespace HM_Color_Palette\Admin;
 /**
  * Bootstrap admin functionality.
  *
- * Admin interface removed - use filters to customize palettes.
+ * Admin interface (future feat) - use filters to customize palettes.
  * See README.md for instructions.
  */
 function bootstrap() : void {

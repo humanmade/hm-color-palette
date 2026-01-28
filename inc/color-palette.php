@@ -44,7 +44,6 @@ function enqueue_editor_assets() : void {
 
 	$asset = require $asset_file;
 	
-	// Add version number to bust cache when palettes change
 	$palette_version = get_option( 'color_palette_version', 0 );
 	$script_version = $asset['version'] . '.' . $palette_version;
 
@@ -69,7 +68,6 @@ function enqueue_editor_assets() : void {
  * Custom palettes can be added via filter or theme JSON file.
  */
 function get_config() {
-	// Get default palettes from JSON file.
 	$config_file = HM_COLOR_PALETTE_PATH . 'src/color-palette.json';
 	$default_palettes = [];
 	
@@ -90,7 +88,7 @@ function get_config() {
 		);
 	}
 	
-	// Merge theme palettes with defaults (theme palettes override defaults)
+	// Merge theme palettes with defaults (theme/plugin extension palettes override defaults)
 	$palettes = array_merge( $default_palettes, $theme_palettes );
 	
 	/**
@@ -156,7 +154,6 @@ function get_color_palette_css( $color_palette_slug, $element = null ) {
  * @return void
  */
 function enqueue_color_palette_css() : void {
-	// Don't run on AJAX, cron, or REST requests
 	if ( wp_doing_ajax() || wp_doing_cron() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
 		return;
 	}
@@ -164,20 +161,16 @@ function enqueue_color_palette_css() : void {
 	// Get the current post ID based on whether it's a front-end or back-end request.
 	$post_id = is_admin() && isset( $_GET['post'] ) ? intval( $_GET['post'] ) : get_the_ID();
 
-	// Only proceed if we're on a single post, page or editing a post/page in the admin area.
 	if ( empty( $post_id ) || ( ! is_admin() && ! is_single() && ! is_page() ) ) {
 		return;
 	}
 
-	// Get the color palette meta data from the post.
 	$color_palette = get_post_meta( $post_id, 'document_color_palette', true );
 
-	// Only proceed if we have color palette meta data.
 	if ( empty( $color_palette ) ) {
 		return;
 	}
 
-	// Use inline style or register a handle if needed
 	wp_register_style( 'hm-color-palette', false );
 	wp_enqueue_style( 'hm-color-palette' );
 	wp_add_inline_style( 'hm-color-palette', get_color_palette_css( $color_palette, 'body' ) );
@@ -190,10 +183,8 @@ function enqueue_color_palette_css() : void {
  * @return string The new body classes.
  */
 function add_color_body_class( $classes ) {
-	// Get the color palette meta data from the post.
 	$color_palette = get_post_meta( get_the_id(), 'document_color_palette', true );
 
-	// Only proceed if we have color palette meta data.
 	if ( empty( $color_palette ) ) {
 		return $classes;
 	}
