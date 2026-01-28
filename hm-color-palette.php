@@ -34,10 +34,6 @@ define( 'HM_COLOR_PALETTE_URL', plugin_dir_url( __FILE__ ) );
 require_once HM_COLOR_PALETTE_PATH . 'inc/color-palette.php';
 require_once HM_COLOR_PALETTE_PATH . 'inc/admin-page.php';
 
-// Load test block.
-require_once HM_COLOR_PALETTE_PATH . 'src/blocks/test-block/register.php';
-
 // Bootstrap the plugin.
 Color_Palette\bootstrap();
 Admin\bootstrap();
-Blocks\Test_Block\bootstrap();

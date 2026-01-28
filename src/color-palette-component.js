@@ -17,7 +17,6 @@ const HMColorPalette = ( props ) => {
 		'document_color_palette'
 	);
 	
-	// Use only default palettes for now (custom palettes via dashboard coming soon)
 	const [ colorOptions ] = useState( colorOptionsDefault );
 
 	/**
