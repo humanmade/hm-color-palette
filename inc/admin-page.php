@@ -2,7 +2,11 @@
 /**
  * Admin functionality.
  *
- * @package color-palette
+ * Reserved for future admin interface features.
+ * Currently, palettes are customized via filters.
+ *
+ * @package HM_Color_Palette
+ * @see README.md for customization instructions.
  */
 
 namespace HM_Color_Palette\Admin;
@@ -10,8 +14,10 @@ namespace HM_Color_Palette\Admin;
 /**
  * Bootstrap admin functionality.
  *
- * Admin interface (future feat) - use filters to customize palettes.
- * See README.md for instructions.
+ * Placeholder for future admin interface features.
+ * Palettes can currently be customized via the hm_color_palette_options filter.
+ *
+ * @return void
  */
 function bootstrap() : void {
 	// Reserved for future admin functionality

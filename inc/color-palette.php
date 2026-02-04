@@ -1,6 +1,11 @@
 <?php
 /**
- * Functionality related to color palette meta data for posts.
+ * Color Palette functionality.
+ *
+ * Handles color palette meta data registration, editor integration,
+ * and front-end CSS variable injection for posts and pages.
+ *
+ * @package HM_Color_Palette
  */
 
 namespace HM_Color_Palette\Color_Palette;
@@ -65,7 +70,11 @@ function enqueue_editor_assets() : void {
 
 /**
  * Retrieve the color palette configuration.
- * Custom palettes can be added via filter or theme JSON file.
+ *
+ * Loads default palettes from plugin config, merges with theme overrides
+ * if available, and applies filters for customization.
+ *
+ * @return array Array of color palette configurations.
  */
 function get_config() {
 	$config_file = HM_COLOR_PALETTE_PATH . 'src/color-palette.json';
@@ -103,7 +112,7 @@ function get_config() {
  * Get color palette config by slug.
  *
  * @param string $slug Slug of palette to look up.
- * @return []|null Color palette config, if found.
+ * @return array|null Color palette config array if found, null otherwise.
  */
 function get_palette_by_slug( $slug ) {
 	$config = get_config();
@@ -113,9 +122,11 @@ function get_palette_by_slug( $slug ) {
 /**
  * Gets the color palette inline styles.
  *
- * @param string $color_palette_slug  Slug of the selected color palette.
- * @param string $element             The element to add the styles to.
- * @return string The inline styles string.
+ * Generates CSS custom properties for the selected color palette.
+ *
+ * @param string      $color_palette_slug Slug of the selected color palette.
+ * @param string|null $element            Optional. The element to wrap the styles with.
+ * @return string|void The inline styles string, or void if palette not found.
  */
 function get_color_palette_css( $color_palette_slug, $element = null ) {
 
@@ -177,10 +188,12 @@ function enqueue_color_palette_css() : void {
 }
 
 /**
- * Adds the color as a body class.
+ * Adds the color palette as a body class.
  *
- * @param string $classes The current body classes.
- * @return string The new body classes.
+ * Appends a CSS class based on the selected color palette to the body classes.
+ *
+ * @param array $classes The current body classes.
+ * @return array The modified body classes array.
  */
 function add_color_body_class( $classes ) {
 	$color_palette = get_post_meta( get_the_id(), 'document_color_palette', true );
