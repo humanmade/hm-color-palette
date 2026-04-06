@@ -1,11 +1,12 @@
 /**
- * Color Palette Module Exports.
+ * Color Palette Editor Scripts.
  *
- * Exports the main color palette component and utility functions
- * for setting and retrieving color palette styles.
+ * Includes the page level editor sidebar.
  *
- * @package HM_Color_Palette
+ * Exports the main color palette component.
  */
 
+import './color-palette-editor-sidebar.js';
+
+// Module Exports.
 export { default as HMColorPalette } from './color-palette-component.js';
-export { colorOptions, setColorPalette, getBlockInlineColorStyles } from './set-color-palette.js';

@@ -26,7 +26,6 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Define plugin constants.
-define( 'HM_COLOR_PALETTE_VERSION', '1.0.0' );
 define( 'HM_COLOR_PALETTE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'HM_COLOR_PALETTE_URL', plugin_dir_url( __FILE__ ) );
 
