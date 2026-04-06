@@ -57,8 +57,8 @@ function enqueue_editor_assets() : void {
 		true
 	);
 
-	$theme_colors = get_theme_colors();
-
+	// Get filtered theme colors and localize script with them.
+	$theme_colors = get_filtered_theme_colors();
 	wp_localize_script( 'hm-color-palette-editor', 'themeColors', $theme_colors );
 
 	wp_enqueue_style(
@@ -71,10 +71,11 @@ function enqueue_editor_assets() : void {
 
 /**
  * Retrieve the theme color palette options.
+ * Apply `hm_color_palette_options` filter.
  *
  * @return array Array of theme color palette options.
  */
-function get_theme_colors() {
+function get_filtered_theme_colors() {
 	$theme_data = \WP_Theme_JSON_Resolver::get_merged_data()->get_settings();
 	$palette = $theme_data['color']['palette']['theme'] ?? [];
 
