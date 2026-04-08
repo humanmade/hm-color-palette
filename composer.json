@@ -1,0 +1,26 @@
+{
+	"name": "humanmade/color-palette",
+	"description": "Adds color palette meta data functionality for posts and pages",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Human Made Limited",
+			"email": "hello@humanmade.com"
+		}
+	],
+	"require": {
+		"php": ">=8.2"	},
+	"require-dev": {
+		"humanmade/coding-standards": "dev-upgrade-wpcs"
+	},
+	"scripts": {
+		"lint": [
+			"phpcs --standard=phpcs.xml.dist"
+		]	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
+}
