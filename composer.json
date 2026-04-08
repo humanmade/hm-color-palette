@@ -1,5 +1,5 @@
 {
-	"name": "humanmade/color-palette",
+	"name": "humanmade/hm-color-palette",
 	"description": "Adds color palette meta data functionality for posts and pages",
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-or-later",
